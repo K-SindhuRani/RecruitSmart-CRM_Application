@@ -737,11 +737,18 @@ const StudentDashboard = ({ user, onLogout, initialSection = 'home', initialJobT
                         <button className="sd-icon-btn" style={{ background: 'var(--sd-primary)', color: 'white' }} onClick={() => addItem('certificates', { title: '', description: '' })}>+</button>
                     </div>
                     {profile.certificates.map((cert, i) => (
-                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 40px', gap: '0.5rem', marginBottom: '0.5rem', alignItems: 'start' }}>
                             <div>
                                 <input type="text" placeholder="Certificate Name" className="sd-card" style={{ padding: '8px', width: '100%', marginBottom: '0.5rem' }} value={cert.title} onChange={e => updateItem('certificates', i, 'title', e.target.value)} />
                                 <textarea placeholder="Issued by / Description" className="sd-card" style={{ padding: '8px', width: '100%', height: '60px', resize: 'vertical' }} value={cert.description} onChange={e => updateItem('certificates', i, 'description', e.target.value)} />
                             </div>
+                            <button className="sd-icon-btn delete" onClick={() => deleteItem('certificates', i)}>🗑️</button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
 
     const renderHome = () => (
         <div className="fadeIn">
